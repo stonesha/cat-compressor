@@ -4,6 +4,9 @@ An application to compress images. Only supports jpeg/jpg for now. Stores them i
 # Demo
 <img src="./cat-compressor-demo.gif" alt="cat compressor demo" />
 
+# Stack
+Built with Tauri. Leveraging Rust for the actual image compression and uses React with TailwindCSS and Zustand for managing the frontend view.
+
 # Development
 Run ```pnpm install``` before ``` pnpm tauri dev```.
 
