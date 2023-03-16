@@ -12,3 +12,16 @@ Run ```pnpm install``` before ```pnpm tauri dev```.
 
 # Building
 Run ```pnpm tauri build```. Binary executable will be in ```src-tauri/target/release/cat-compressor``` and installers will be in ```src-tauri/target/release/bundle/```.
+
+Release new version
+Update CHANGELOG.md
+Bump the version number in src-tauri/Cargo.toml
+Run cargo check to update Cargo.lock
+Create a git tag in the format v#.#.#
+Add release notes to the generated GitHub release and publish it
+
+# Releasing
+1. Bump version number in ```src-tauri/Cargo.toml```
+2. Run ```cargo check``` to update Cargo.lock
+3. Create git tag in format of ```v#.#.#```
+4. Add release notes to the generated GitHub release and publish it
