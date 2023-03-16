@@ -11,4 +11,4 @@ Built with Tauri. Leveraging Rust for the actual image compression and uses Reac
 Run ```pnpm install``` before ``` pnpm tauri dev```.
 
 # Building
-Run ```pnpm tauri build```. Binary executable will be in ```src-tauri/target/release/cat-compressor``` and installer will be in ```src-tauri/target/release/bundle/```.
+Run ```pnpm tauri build```. Binary executable will be in ```src-tauri/target/release/cat-compressor``` and installers will be in ```src-tauri/target/release/bundle/```.
