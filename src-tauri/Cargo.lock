@@ -204,7 +204,7 @@ dependencies = [
 
 [[package]]
 name = "cat-compressor"
-version = "0.0.0"
+version = "0.0.1"
 dependencies = [
  "image_compressor",
  "serde",
