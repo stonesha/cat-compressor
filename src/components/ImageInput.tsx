@@ -1,6 +1,8 @@
 import { open } from "@tauri-apps/api/dialog";
 import { PhotoIcon } from "@heroicons/react/24/outline";
 import { invoke } from "@tauri-apps/api";
+import { listen } from "@tauri-apps/api/event";
+import { useEffect } from "react";
 
 import useStore, { type CompressionResult } from "@/lib/useStore";
 
@@ -8,6 +10,19 @@ function ImageInput() {
   const selectedImages = useStore((state) => state.selectedImages);
   const setSelectedImages = useStore((state) => state.setSelectedImages);
   const setCompressionResult = useStore((state) => state.setCompressionResult);
+
+  useEffect(() => {
+    async function handleDnd() {
+      await listen("tauri://file-drop", (event) => {
+        //@ts-ignore
+        const filepaths: string[] = event.payload;
+
+        setSelectedImages(filepaths);
+      });
+    }
+
+    if (!selectedImages) handleDnd();
+  });
 
   async function handleOpen() {
     const selected = await open({
@@ -76,7 +91,7 @@ function ImageInput() {
       ) : (
         <button
           type="button"
-          className="relative block w-full h-full rounded-lg border-2 border-dashed border-gray-300 p-12 text-center hover:border-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+          className="relative block w-full h-full rounded-lg border-2 border-dashed border-gray-300 p-12 text-center hover:border-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 hover:bg-gray-100"
           onClick={handleOpen}
         >
           <PhotoIcon className="mx-auto h-12 w-12 text-gray-400" />
